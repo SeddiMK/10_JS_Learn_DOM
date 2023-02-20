@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>z1</title>
+</head>
+
+<body>
+	<div>Пользователи:</div>
+	<ul>
+		<li>Джон</li>
+		<li>Пит</li>
+	</ul>
+	<script>
+		const divElement = document.querySelector('div') //document.body.firstElementChild // или document.body.children[0] // или (первый узел пробел, поэтому выбираем второй) document.body.childNodes[1]
+		const divUl = document.querySelector('ul') //document.body.lastElementChild // или document.body.children[1]
+		const divLiTwo = divUl.childNodes[1] // получаем <ul>, и его последнего ребёнка document.body.lastElementChild.lastElementChild
+
+
+		console.log(divElement);
+		console.log(divUl);
+		console.log(divLiTwo);
+	</script>
+</body>
+<!-- 
+	Напишите код, как получить…
+
+		элемент <div>?
+		<ul>?
+		второй <li> (с именем Пит)? -->
+
+</html>
