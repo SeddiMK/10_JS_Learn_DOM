@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset=utf-8 />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Return first and last name from a form - w3resource</title>
+</head>
+
+<body>
+	<section class="main">
+		<form id="form1" onsubmit="getFormvalue()">
+			First name: <input type="text" name="fname" value="David"><br>
+			Last name: <input type="text" name="lname" value="Beckham"><br>
+			<input type="submit" value="Submit">
+		</form>
+		<p class="main__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus quas omnis eaque aperiam
+			commodi aspernatur esse nihil cum libero modi error, pariatur eum praesentium. Amet aperiam ut vero corporis
+			aspernatur!</p>
+		<div class="main__blok-2" style="margin-bottom: 2rem;">
+			<p>
+				<a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self"
+					href="https://www.w3resource.com/">w3resource</a>
+			</p>
+			<button onclick="getAttributes()">Click here to get attributes value</button>
+		</div>
+		<div class="main__blok-5 blok-5" style="margin-bottom: 2rem;">
+			<table class="blok-5__sample-table" id="sampleTable" border="1">
+				<tr>
+					<td>Row1 cell1</td>
+					<td>Row1 cell2</td>
+				</tr>
+				<tr>
+					<td>Row2 cell1</td>
+					<td>Row2 cell2</td>
+				</tr>
+			</table><br>
+			<input class="blok-5__insert-row" type="button" value="Insert row"> <!-- onclick="insert_Row()" -->
+			<input class="blok-5__delete-row" type="button" value="Delete row"><!-- onclick="delete_Row()" -->
+		</div>
+	</section>
+	<script>
+		let formName = document.getElementById('form1');
+		const fName = document.querySelector('input[name="fname"]').value;
+		const lName = document.querySelector('input[name="lname"]').value;
+		//=================================================================
+		const pOne = document.querySelector('p');
+
+		pOne.style.backgroundColor = 'green';
+		//=================================================================
+		// получить в консоль атрибуты ссылки <а> href, hreflang, rel, target и type
+
+		function getAttributes() {
+			var a = document.getElementById('w3r');
+			var atts = a.attributes;
+			return console.log(atts[5], atts[2], '\n', atts[3], '\n', atts[4], '\n', atts[1]);
+		}
+		//=================================================================
+
+
+		function getFormvalue() {
+			event.preventDefault() // не субмитим форму автоматически
+			// тут вручную что-то делаем и субмитим форму 
+			return console.log(fName, '\n', lName);
+
+		}
+		// function getFormvalue() {
+		// 	//var x = document.getElementById("form1");
+		// 	for (var i = 0; i < formName.length; i++) {
+		// 		if (formName.elements[i].value != 'Submit') {
+		// 			console.log(formName.elements[i].value);
+		// 		}
+		// 	}
+		// }
+		//===================================================
+		// добавления строк в таблицу
+		const insertRowBtn = document.querySelector('.blok-5__insert-row');
+		const deleteRowBtn = document.querySelector('.blok-5__delete-row');
+		const sampleTable = document.querySelector('.blok-5__sample-table');
+		const trTable = document.querySelectorAll('tr');
+		const tr = document.querySelector("tr").lastChild;
+		var numRow = 3;
+
+		console.log(sampleTable);
+		console.log(trTable);
+
+		insertRowBtn.addEventListener("click", function () {
+			tr.innerHTML = `<td>Row${numRow} cell1</td> <td> Row${numRow} cell2</td>`;
+			sampleTable.insertAdjacentHTML("beforeend",
+				`<tr><td>Row${numRow} cell1</td> <td> Row${numRow} cell2</td></tr>`
+			);
+
+			console.log("Кнопка нажата.");
+			numRow += 1;
+			console.log(sampleTable);
+		});
+
+		deleteRowBtn.addEventListener("click", function () {
+
+			sampleTable.deleteRow(-1);
+			console.log("Кнопка нажата.");
+			numRow -= 1;
+		});
+
+
+				// function insert_Row() {
+		// 	//Для начала, вам нужно найти элемент, в который нужно вставить вашу разметку. Вданном случае таблицу с id='table'.
+		// 	// var table = document.getElementById('table');
+
+		// 	//Теперь создаем строку и присваиваем ее переменной.
+		// 	//var tr = document.createElement("tr");
+
+		// 	console.log(numRow);
+
+		// 	tr.innerHTML = `<td>Row${numRow} cell1</td> <td> Row${numRow} cell2</td>`;
+
+		// 	//вставляем строку в таблицу
+		// 	sampleTable.appendChild(tr);
+
+		// 	// if (sampleTable) {
+
+		// 	// 	//добавляем разметку в созданную строку
+		// 	// 	tr.innerHTML = '<td>Row3 cell1</td> <td> Row2 cell2</td>';
+
+		// 	// 	//вставляем строку в таблицу
+		// 	// 	sampleTable.appendChild(tr);
+
+		// 	// } else {
+
+		// 	// 	console.log('Error. Таблица не найдена');
+
+		// 	// }
+
+		// }
+
+		// function delete_Row() {
+
+		// 	//Для начала, вам нужно найти элемент, в который нужно вставить вашу разметку. Вданном случае таблицу с id='table'.
+		// 	// var table = document.getElementById('table');
+
+		// 	sampleTable.removeChild(tr);
+		// 	// if (sampleTable) {
+		// 	// 	//удаляем строку в таблицу
+		// 	// sampleTable.removeChild(tr);
+
+		// 	// } else {
+
+		// 	// 	console.log('Error. Таблица не найдена');
+
+		// 	// }
+		// }
+//=================================================
+	</script>
+</body>
+
+</html>
