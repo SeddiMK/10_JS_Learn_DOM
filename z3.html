@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset=utf-8 />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Return first and last name from a form - w3resource</title>
+</head>
+
+<body>
+	<section class="main">
+		<form id="form1" onsubmit="getFormvalue()">
+			First name: <input type="text" name="fname" value="David"><br>
+			Last name: <input type="text" name="lname" value="Beckham"><br>
+			<input type="submit" value="Submit">
+		</form>
+		<p class="main__text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus quas omnis eaque aperiam
+			commodi aspernatur esse nihil cum libero modi error, pariatur eum praesentium. Amet aperiam ut vero corporis
+			aspernatur!</p>
+		<div class="main__blok-2" style="margin-bottom: 2rem;">
+			<p>
+				<a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self"
+					href="https://www.w3resource.com/">w3resource</a>
+			</p>
+			<button onclick="getAttributes()">Click here to get attributes value</button>
+		</div>
+		<div class="main__blok-5 blok-5" style="margin-bottom: 2rem;">
+			<table class="blok-5__sample-table" id="sampleTable" border="1">
+				<tr>
+					<td>Row1 cell1</td>
+					<td>Row1 cell2</td>
+				</tr>
+				<tr>
+					<td>Row2 cell1</td>
+					<td>Row2 cell2</td>
+				</tr>
+			</table><br>
+			<input class="blok-5__insert-row" type="button" value="Insert row"> <!-- onclick="insert_Row()" -->
+			<input class="blok-5__delete-row" type="button" value="Delete row"><!-- onclick="delete_Row()" -->
+		</div>
+		<div class="main__blok-6 blok-6" style="margin-bottom: 2rem;">
+			<table id="myTable" border="1">
+				<tr>
+					<td>Row1 cell1</td>
+					<td>Row1 cell2</td>
+				</tr>
+				<tr>
+					<td>Row2 cell1</td>
+					<td>Row2 cell2</td>
+				</tr>
+				<tr>
+					<td>Row3 cell1</td>
+					<td>Row3 cell2</td>
+				</tr>
+			</table>
+			<form>
+				<input type="button" onclick="changeContent()" value="Change content">
+			</form>
+		</div>
+		<div class="main__blok-7 blok-7" style="margin-bottom: 2rem;">
+			<table id="myTable-7" border="1" style="margin-bottom: 1.5rem;">
+			</table>
+			<form>
+				<input type="button" onclick="createTable()" value="Create the table">
+			</form>
+		</div>
+		<div class="main__blok-8 blok-8" style="margin-bottom: 2rem;">
+			<form>
+				<select id="colorSelect">
+					<option>Red</option>
+					<option>Green</option>
+					<option>White</option>
+					<option>Black</option>
+				</select>
+				<input type="button" onclick="removeColor()" value="Select and Remove">
+			</form>
+		</div>
+		<div class="main__blok-9 blok-9">
+			<form>
+				Select your favorite Color :
+				<select id="mySelect">
+					<option>Red</option>
+					<option>Green</option>
+					<option>Blue</option>
+					<option>White</option>
+				</select>
+				<input type="button" onclick="getOptions()" value="Count and Output all items">
+			</form>
+		</div>
+		<div class="main__blok-10 blok-10" style="margin-bottom: 2rem;">
+			<p>========================================================</p>
+			<p>Input radius value and get the volume of a sphere. <br>
+				Введите значение радиуса и получите объем сферы.</p>
+			<form action="" method="post" id="myForm">
+				<label for="radius">Radius/ Радиус</label>
+				<input type="text" name="radius" id="radius" style="margin-bottom: 1rem;" required>
+				<br>
+				<label for="volume">Volume/ Объем</label>
+				<input type="text" name="volume" id="volume" style="margin-bottom: 1rem;">
+				<br>
+				<input type="submit" value="Calculate/ Расчитать" id="submit">
+			</form>
+		</div>
+		<div class="main__blok-11 blok-11" id="blok-11" style="margin-bottom: 2rem;">
+			<button id="jsstyle" onclick="displayRandomImage();" style="margin-bottom: 1rem;">Show Image</button>
+		</div>
+
+	</section>
+
+	<section class="menu">
+		<h1>Делегирование событий</h1>
+		<p><a href="#" data-toggle-id="main_menu">Показать/Скрыть меню</a></p>
+		<ul id="main_menu">
+			<li data-command="open">Открыть</li>
+			<li data-command="save">Сохранить</li>
+			<li data-command="draw">Рисовать</li>
+			<li data-command="edit">Редактировать</li>
+			<li data-command="customize">Настройки</li>
+		</ul>
+	</section>
+	<!-- ============================================================= -->
+	<script>
+		let formName = document.getElementById('form1');
+		const fName = document.querySelector('input[name="fname"]').value;
+		const lName = document.querySelector('input[name="lname"]').value;
+		//=================================================================
+		const pOne = document.querySelector('p');
+
+		pOne.style.backgroundColor = 'green';
+		//=================================================================
+		// получить в консоль атрибуты ссылки <а> href, hreflang, rel, target и type
+
+		function getAttributes() {
+			var a = document.getElementById('w3r');
+			var atts = a.attributes;
+			return console.log(atts[5], atts[2], '\n', atts[3], '\n', atts[4], '\n', atts[1]);
+		}
+		//=================================================================
+
+
+		function getFormvalue() {
+			event.preventDefault() // не субмитим форму автоматически
+			// тут вручную что-то делаем и субмитим форму 
+			return console.log(fName, '\n', lName);
+
+		}
+		// function getFormvalue() {
+		// 	//var x = document.getElementById("form1");
+		// 	for (var i = 0; i < formName.length; i++) {
+		// 		if (formName.elements[i].value != 'Submit') {
+		// 			console.log(formName.elements[i].value);
+		// 		}
+		// 	}
+		// }
+		//===================================================
+		// добавления строк в таблицу
+		const insertRowBtn = document.querySelector('.blok-5__insert-row');
+		const deleteRowBtn = document.querySelector('.blok-5__delete-row');
+		const sampleTable = document.querySelector('.blok-5__sample-table');
+		// const trTable = document.querySelectorAll('tr');
+		const tr = document.querySelector("tr").lastChild;
+		var numRow = 3;
+
+		insertRowBtn.addEventListener("click", function () {
+			tr.innerHTML = `<td>Row${numRow} cell1</td> <td> Row${numRow} cell2</td>`;
+			sampleTable.insertAdjacentHTML("beforeend",
+				`<tr><td>Row${numRow} cell1</td> <td> Row${numRow} cell2</td></tr>`
+			);
+
+			console.log("Нажата кнопка Добавить");
+			numRow += 1;
+			//console.log(sampleTable);
+		});
+
+		deleteRowBtn.addEventListener("click", function () {
+			sampleTable.deleteRow(-1);
+			console.log("Нажата кнопка Удалить");
+			numRow -= 1;
+		});
+
+
+		// function insert_Row() {
+		// 	var x = document.getElementById('sampleTable').insertRow(0);
+		// 	var y = x.insertCell(0);
+		// 	var z = x.insertCell(1);
+		// 	y.innerHTML = "New Cell1";
+		// 	z.innerHTML = "New Cell2";
+		// }
+
+		//=================================================
+		// Напишите функцию JavaScript, всплывающее окно prompt(), которая принимает строку, столбец (для идентификации конкретной ячейки) для обновления содержимого этой ячейки.
+
+		function changeContent() {
+			var questionRow = Number(prompt('Какой ряд вы выбрали? Введите 0(первый), 1(второй) или 2(третий)', '0'));
+			var questionCell = Number(prompt('Какую колонку вы выбрали? Введите 0(первая) или 1(вторая)', '0'));
+			var questionText = prompt('Введите текст в ячейке', 'Текст')
+			var myTable = document.getElementById('myTable');
+
+			const cells = myTable.getElementsByTagName("td");
+
+			// проверка
+			if (!Number.isInteger(questionRow) || questionRow < 0 || questionRow > 3 || questionRow === null || questionRow === "" || !Number.isInteger(questionCell) || questionCell < 0 || questionCell > 3 || questionCell === null || questionCell === "") {
+				alert('Вы ввели недопустимое значение. Посмотрите подсказку. :-)');
+				return console.log('Ошибка ввода');
+			}
+
+			Array.from(cells).forEach(cell => {
+				cell.addEventListener("mouseover", function () {
+					var rowIndex = this.parentNode.rowIndex
+					var cellIndex = this.cellIndex
+					console.log(`rowIndex: ${rowIndex}, cellIndex: ${cellIndex}`);
+
+				});
+			});
+
+			myTable.rows[questionRow].cells[questionCell].innerHTML = questionText;
+
+		}
+		// другое решение
+		// function changeContent()
+		// {
+		// rn = window.prompt("Input the Row number(0,1,2)", "0");
+		// cn = window.prompt("Input the Column number(0,1)","0");
+		// content = window.prompt("Input the Cell content");  
+		// var x=document.getElementById('myTable').rows[parseInt(rn,10)].cells;
+		// x[parseInt(cn,10)].innerHTML=content;
+		// }
+		// ========= Задача 7 ====================
+		// Напишите функцию JavaScript, которая создает таблицу, принимает от пользователя строку, номера столбцов и вводит номер столбца строки в качестве содержимого (например, Row-0 Column-0) ячейки.
+		var myTable7 = document.getElementById('myTable-7');
+		function createTable() {
+			var rn = parseInt(window.prompt("Сколько рядов в таблице вы хотите?", "1"), 10);
+			var cn = parseInt(window.prompt("Сколько столбцов в таблице вы хотите?", "1"), 10);
+
+			//console.log(rn);
+
+			for (let x = 0; x < rn; x++) {
+				var tr = document.createElement("tr");
+
+				for (let y = 0; y < cn; y++) {
+					var td = document.createElement("td");
+					td.innerHTML = `Ячейка${x + 1} Слолбец${y + 1}`;
+					tr.appendChild(td);
+				}
+				myTable7.appendChild(tr);
+			}
+			return myTable7;
+			// Другое решение
+			// function createTable() {
+			// 	rn = window.prompt("Input number of rows", 1);
+			// 	cn = window.prompt("Input number of columns", 1);
+
+			// 	for (var r = 0; r < parseInt(rn, 10); r++) {
+			// 		var x = document.getElementById('myTable').insertRow(r);
+			// 		for (var c = 0; c < parseInt(cn, 10); c++) {
+			// 			var y = x.insertCell(c);
+			// 			y.innerHTML = "Row-" + r + " Column-" + c;
+			// 		}
+			// 	}
+			// }	
+		}
+		// ========= Задача 8 ====================
+		// Напишите программу на JavaScript для удаления элементов из выпадающего списка.
+		function removeColor() {
+			var mySelect = document.getElementById('colorSelect');
+			// checkValidity()
+			console.log(mySelect.selectedIndex);
+			//mySelect.value.remove(); // нужен индекс выбранного элемента select
+			var i;
+			for (i = mySelect.options.length - 1; i >= 0; i--) {
+				if (mySelect.options[i].selected)
+					mySelect.remove(i);
+			}
+		}
+		// Другое решение
+		// function removecolor() {
+		// 	var x = document.getElementById("colorSelect");
+		// 	x.remove(x.selectedIndex);
+		// }
+		// ========= Задача 9 ====================
+		// Напишите программу на JavaScript для подсчета и отображения элементов раскрывающегося списка в окне предупреждения.
+		// function getOptions() {
+		// 	var mySelect = document.getElementById('mySelect');
+		// 	var mySelectLenghth = mySelect.length
+		// 	console.log(mySelect.length);
+		// 	alert('Количество цветов(элементов) = ' + mySelectLenghth)
+		// }
+		// Другое решение
+		function getOptions() {
+			var mySelect = document.getElementById("mySelect");
+			var txt1 = "Quantity of items : " + mySelect.length;
+			for (i = 0; i < mySelect.length; i++) {
+				txt1 = txt1 + "\n" + mySelect.options[i].text;
+			}
+			console.log("1211 \n767878789");
+
+			alert(txt1);
+		}
+		// ========= Задача 10 ====================
+		// Напишите программу на JavaScript для расчета объема сферы.
+		const myForm = document.getElementById('myForm')
+		const radius = document.getElementById('radius')
+		const volume = document.getElementById('volume')
+		const submit = document.getElementById('submit')
+
+		function volume_sphere() {
+			submit.addEventListener("click", function (e) {
+				e.preventDefault(); //чтобы не было перезагрузки при отправке формы при нажатии input type = 'submit'
+				if (/^-?(0|[1-9]\d*)(\.[0-9]{1,4})?$/.test(radius.value) && radius.value > 0) { //все положительные числа, включаая с плавающей точкой. Регулярные выражения для валидации https://habr.com/ru/post/123845/
+					volume.value = ((4 * Math.PI * Math.pow(radius.value, 3)) / 3).toFixed(2);
+				} else {
+					alert('Вы ввели в поле "Radius/ Радиус" не положительное число')
+				}
+			});
+		}
+		window.onload = myForm.onsubmit = volume_sphere; //Событие onsubmit возникает при отправке формы, это обычно происходит, когда пользователь нажимает специальную кнопку Submit.
+
+		// Другое решение
+		// function volume_sphere() {
+		// 	var volume;
+		// 	var radius = document.getElementById('radius').value;
+		// 	radius = Math.abs(radius);
+		// 	volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+		// 	volume = volume.toFixed(4);
+		// 	document.getElementById('volume').value = volume;
+		// 	return false;
+		// }
+		// window.onload = myForm.onsubmit = volume_sphere;
+
+		// ========= Задача 11 ====================
+		// Напишите программу JavaScript для отображения случайного изображения (нажав на кнопку) из следующего списка:"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: "240", height: "160", "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: "320", height: "195", "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: "500", height: "343"
+
+		const blok11 = document.getElementById('blok-11')
+		const jsstyleBtn = document.getElementById('jsstyle')
+		const createElemDiv = document.createElement('div')
+
+		var arrImg = ["http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+			"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+			"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",]
+		/**
+	 * Получение случайного элемента массива
+	 * @param arr
+	 * @return {*}
+	 */
+		function arrayRandElement(arr) {
+			var rand = Math.floor(Math.random() * arr.length);
+			return arr[rand];
+		}
+		var i = 0;
+		function displayRandomImage() {
+			var elemImg = document.createElement("img");
+
+			elemImg.classList.add('createElemImg');
+
+			if (i > 0) {
+				document.querySelector('.createElemImg').remove();
+			}
+			elemImg.setAttribute("src", arrayRandElement(arrImg));
+
+			// if (elemImg[0] && elemImg[0].style) {
+			// 	elemImg.style.height = '160px';
+			// 	elemImg.style.width = '240px';
+			// 	elemImg.style.display = 'block';
+			// 	elemImg.setAttribute("alt", "Tadg Mahal")
+
+			// }
+			// if (elemImg[1] && elemImg[1].style) {
+			// 	elemImg.style.height = '320px';
+			// 	elemImg.style.width = '195px';
+			// 	elemImg.style.display = 'block';
+			// 	elemImg.setAttribute("alt", "Sunset")
+
+
+			// }
+			// if (elemImg[2] && elemImg[2].style) {
+			// 	elemImg.style.height = '500px';
+			// 	elemImg.style.width = '343px';
+			// 	elemImg.style.display = 'block';
+			// 	elemImg.setAttribute("alt", "Naturals")
+
+			// }
+
+			blok11.insertAdjacentElement(
+				'beforeend', createElemDiv
+			)
+			createElemDiv.insertAdjacentElement(
+				'beforeend', elemImg
+			)
+			i++;
+		}
+
+		// Другое решение
+		// function display_random_image() {
+		// 	var theImages = [{
+		// 		src: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg",
+		// 		width: "240",
+		// 		height: "160"
+		// 	}, {
+		// 		src: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+		// 		width: "320",
+		// 		height: "195"
+		// 	}, {
+		// 		src: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg",
+		// 		width: "500",
+		// 		height: "343"
+		// 	}];
+
+		// 	var preBuffer = [];
+		// 	for (var i = 0, j = theImages.length; i < j; i++) {
+		// 		preBuffer[i] = new Image();
+		// 		preBuffer[i].src = theImages[i].src;
+		// 		preBuffer[i].width = theImages[i].width;
+		// 		preBuffer[i].height = theImages[i].height;
+		// 	}
+
+		// 	// create random image number
+		// 	function getRandomInt(min, max) {
+		// 		//  return Math.floor(Math.random() * (max - min + 1)) + min;
+
+		// 		imn = Math.floor(Math.random() * (max - min + 1)) + min;
+		// 		return preBuffer[imn];
+		// 	}
+
+		// 	// 0 is first image,   preBuffer.length - 1) is  last image
+
+		// 	var newImage = getRandomInt(0, preBuffer.length - 1);
+
+		// 	// remove the previous images
+		// 	var images = document.getElementsByTagName('img');
+		// 	var l = images.length;
+		// 	for (var p = 0; p < l; p++) {
+		// 		images[0].parentNode.removeChild(images[0]);
+		// 	}
+		// 	// display the image
+		// 	document.body.appendChild(newImage);
+		// }
+		// ========= Задача 12 ====================
+		//
+
+		// ========= Задача MENU ====================
+		//Выполнять действия при выборе определеенного пункта меню
+		// https://www.youtube.com/watch?v=KjacEXfpleU&list=PLA0M1Bcd0w8zri9wWiDFmOukXhguEYBBO&index=13
+		// let menuActs = {
+		// 	open() { alert("open..."); },
+		// 	save() { alert("save..."); }
+		// }
+
+		main_menu.addEventListener("click", function (event) { //main_menu.  -обращение напрямуую по id
+			//защита. Чтобы при нажатии между пунктами меню ничего не происходило
+			let li = event.target.closest('li'); //взять ближайший li
+			if (li == null) return; //если ближайший тег li не сучествует
+
+			let act = li.dataset.command;
+			if (act && menuActs[act] !== undefined) menuActs[act]();
+		});
+		// дополнительное меню показать/скрать
+		let a = document.querySelector('.menu > p > a');
+		//console.log(a);
+		a.onclick = function (event) {
+			event.preventDefault();//убрать действие браузера по умолчанию(при нажатии на ссылку, стр обновляется- убрали).
+		};
+
+		document.addEventListener("click", function (event) {
+			let id = event.target.dataset.toggleId; //получаем id элемента который нужно скрыть
+			if (!id) return;//если свойство toggleId не существует то return
+			let elem = document.getElementById(id);
+			if (!elem) return; //если нет elem то return
+			elem.hidden = !elem.hidden;// меняем видимость elem
+		})
+
+
+		//убираем контекстное меню при нажатии на првую кнопку мыши
+		document.addEventListener("contextmenu", function (event) {
+			if (event.defaultPrevented) return; // true если на более нижнем уровне был вызван event.preventDefault();. Было ли вызвано контекстное меню для дочернего элемента
+			console.log("Контекстное меню документа"); //здесь можно сделать счетчик сколько раз было нажата правая кнопка для вызова контекстного меню
+			//event.preventDefault();
+		}, { passive: true }); //{ passive: true } не собираемся прирывать действие браузера по умолчанию. Можно использовать для быстроты работы на смартфонах. В FireFox, Chrom - true по умолчанию
+		main_menu.oncontextmenu = function (event) {
+			console.log('Контекстное меню главного меню');//здесь можно сделать счетчик сколько раз было нажата правая кнопка для вызова контекстного меню
+			event.preventDefault();
+		}
+	</script>
+</body>
+
+</html>
