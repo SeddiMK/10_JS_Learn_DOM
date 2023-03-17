@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// Промисы https://habr.com/ru/company/ruvds/blog/418085/
+		var keepsHisWord;
+		keepsHisWord = true;
+		promise1 = new Promise(function (resolve, reject) {
+			if (keepsHisWord) {
+				resolve("The man likes to keep his word");
+			} else {
+				reject("The man doesnt want to keep his word");
+			}
+		});
+		console.log(promise1);
+		//=============================================================
+		promise2 = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				resolve({
+					message: "The man likes to keep his word",
+					code: "aManKeepsHisWord"
+				});
+			}, 5 * 1000);
+		});
+		console.log(promise2);
+		//===============================================================
+		keepsHisWord = false;
+		promise3 = new Promise(function (resolve, reject) {
+			if (keepsHisWord) {
+				resolve("The man likes to keep his word");
+			} else {
+				reject("The man doesn't want to keep his word");
+			}
+		});
+		console.log(promise3);
+		//===============================================================
+		function getRandomNumber(start = 1, end = 10) {
+			//предполагается, что при использовании этой функции start и end >=1 и end > start
+			return (parseInt(Math.random() * end) % (end - start + 1)) + start;
+		}
+		var promiseTRRARNOSG = (promiseThatResolvesRandomlyAfterRandomNumnberOfSecondsGenerator = function () {
+			return new Promise(function (resolve, reject) {
+				let randomNumberOfSeconds = getRandomNumber(2, 10);
+				setTimeout(function () {
+					let randomiseResolving = getRandomNumber(1, 10);
+					if (randomiseResolving > 5) {
+						resolve({
+							randomNumberOfSeconds: randomNumberOfSeconds,
+							randomiseResolving: randomiseResolving
+						});
+					} else {
+						reject({
+							randomNumberOfSeconds: randomNumberOfSeconds,
+							randomiseResolving: randomiseResolving
+						});
+					}
+				}, randomNumberOfSeconds * 1000);
+			});
+		});
+		var testProimse = promiseTRRARNOSG();
+		testProimse.then(function (value) {
+			console.log("Value when promise is resolved : ", value);
+		});
+		testProimse.catch(function (reason) {
+			console.log("Reason when promise is rejected : ", reason);
+		});
+		// С помощью цикла создадим десять разных промисов с использованием нашей функции для того, чтобы увидеть разные промисы. Некоторые из них будут разрешены, некоторые - отклонены.
+		// for (i = 1; i <= 10; i++) {
+		// 	let promise = promiseTRRARNOSG();
+		// 	promise.then(function (value) {
+		// 		console.log("Value when promise is resolved : ", value);
+		// 	});
+		// 	promise.catch(function (reason) {
+		// 		console.log("Reason when promise is rejected : ", reason);
+		// 	});
+		// }
+		//============================================================
+		var promise3 = Promise.reject("Not interested");
+		promise3.then(function (value) {
+			console.log("This will not run as it is a rejected promise. The resolved value is ", value);
+		});
+		promise3.catch(function (reason) {
+			console.log("This run as it is a rejected promise. The reason is ", reason);
+		});
+		//============================================================
+		var promise4 = Promise.resolve(1);
+		promise4.then(function (value) {
+			console.log("This will run as it is a resovled promise. The resolved value is ", value);
+		});
+		promise4.then(function (value) {
+			console.log("This will also run as multiple handlers can be added. Printing twice the resolved value which is ", value * 2);
+		});
+		promise4.catch(function (reason) {
+			console.log("This will not run as it is a resolved promise", reason);
+		});
+	</script>
+</body>
+
+</html>
