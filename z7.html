@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// 	Напишите код, который запрещает прокрутку страницы при помощи мыши и клавиш.
+
+		// P.S. Полосу прокрутки посетитель сможет использовать, её никак кроссбраузерно не отключить, разве что убрать при помощи overflow:hidden, что также отключит и прокрутку.
+
+		// P.P.S. Запрет прокрутки можно использовать при показе диалогового окна, чтобы посетитель мог прокручивать только его, а не саму страницу: если прокручивающее событие случилось за пределами окна — отменяем действие браузера.
+
+		// Решение
+		// Источниками прокрутки могут быть: клавиши-стрелки, клавиши pageUp, pageDown, Home, End, а также колёсико мыши.
+
+		/*
+		Коды клавиш, которые вызывают прокрутку:
+			33, // pageUp
+			34, // pageDown
+			35, // end
+			36, // home
+			37, // left
+			38, // up
+			39, // right
+			40  // down
+		*/
+
+		document.onmousewheel = document.onwheel = function () {
+			return false;
+		};
+
+		document.addEventListener("MozMousePixelScroll",
+			function () { return false }, false);
+
+		document.onkeydown = function (e) {
+			if (e.keyCode >= 33 && e.keyCode <= 40) return false;
+		}
+	</script>
+</body>
+
+</html>
