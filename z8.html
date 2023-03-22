@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.active {
+			display: none;
+		}
+
+		a {
+			color: #369;
+			font: 1em Arial, sans-serif;
+		}
+
+		.two {
+			width: 100%;
+			margin: 0;
+		}
+
+		.link-play {
+			/* position: relative; */
+		}
+
+		.play {
+			width: 100px;
+			height: 100px;
+			background-color: #369;
+			border-radius: 100px;
+			position: fixed;
+			top: 200px;
+			/* left: 100px; */
+		}
+	</style>
+</head>
+
+<body>
+	<section class="one">
+		<a href="#">Нажать</a>
+		<div id="container"></div>
+	</section>
+	<section class="two">
+		<h1>Задачи по <a href="http://htmllab.ru">JavaScript</a>
+		</h1>
+		<!--
+При нажатии на ссылку, равномерно перемещать HTML-элемент с классом .play вправо
+-->
+
+		<a class="link-play" href="#">Поехали!</a>
+		<div class="play"></div>
+	</section>
+
+	<script>
+		// Написать скрипт: при нажатии на кнопку, добавлять в div с идентификатором «container» фрагмент разметки:
+		// <div class="item">
+		// 	<h3>Заголовок</h3>
+		// 	<p>текст текст текст</p>
+		// </div>
+		const btn = document.querySelector('a')
+		container.innerHTML = `<div class="item"><h3>Заголовок</h3><p>текст текст текст</p></div>`;
+		let isVisible = true;
+
+		btn.addEventListener("click", function (e) {
+			var item = container.querySelector('.item');
+			// if (item.classList.contains("active")) {
+			// 	item.classList.remove("active");
+			// } else {
+			// 	item.classList.add("active");
+			// }
+			item.classList.toggle("active");
+		});
+		//====================================================
+		const twoBlock = document.querySelector('.two');
+		const btnPlay = twoBlock.querySelector('.link-play');
+		const play = twoBlock.querySelector('.play');
+
+		let RIGHT = twoBlock.getBoundingClientRect().right;
+		let LEFT = twoBlock.getBoundingClientRect().left;
+		let LEFTblock = twoBlock.getBoundingClientRect().width;
+
+		let ciclPlay = play.getBoundingClientRect();
+		let circleWidth = ciclPlay.width;
+		let posX = LEFT;// ciclPlay.left;// + circleRadius;
+
+		const WIDTH = window.innerWidth;
+		let vx = 4;
+
+		btnPlay.addEventListener('click', function (e) {
+			var posXBall = 0;
+			var posReal = setInterval(posit, 1000 / 50);
+
+			//console.log(posXBall);
+			console.log(circleWidth);
+			// console.log(posX);
+			//console.log(RIGHT);
+			// console.log(LEFT);
+			// console.log(WIDTH);
+			function posit() {
+				//vx += 4;
+
+				posX += vx;
+
+				//play.style.left = val + 'px';
+
+
+				if (posX > (RIGHT - circleWidth)) {
+					//play.style.left = LEFT + 'px';
+
+					posX = RIGHT - circleWidth;
+					vx = -vx;
+					//clearInterval(posReal);
+
+				};
+				//console.log(posX - circleWidth);
+				if (posX < LEFT) {
+					//play.style.left = LEFT + 'px';
+					posX = LEFT;
+					vx = -vx;
+					//clearInterval(posReal);
+				};
+				console.log(posX);
+				console.log(LEFT);
+				play.style.left = posX + 'px';
+				//console.log(play.style.left);
+				//clearInterval(posReal);
+			}
+		});
+
+
+	</script>
+</body>
+
+</html>
