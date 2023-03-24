@@ -19,7 +19,7 @@
         height: 100px;
         background-color: #f00;
         position: absolute;
-				z-index: 10;
+        z-index: 10;
 
         top: 0;
         left: 0%;
@@ -27,7 +27,7 @@
       }
       #scroll {
         position: relative;
-				z-index: 0;
+        z-index: 0;
         right: 0;
         margin: 0 0 0 auto;
         width: 100px;
@@ -847,45 +847,205 @@
       // console.log(bottomNextSquaer);
       // console.log(leftNextSquaer);
       // console.log(rightNextSquaer);
-      // define the starting positions
-      let posX = 0;
-      let posY = 0;
-      let angle = 0;
-      // Вычислить координаты относительно всего документа
-      function getCoordsFromDocument(elem) {
-        let coords = elem.getBoundingClientRect();
-        return {
-          top: coords.top + window.pageYOffset,
-          left: coords.left + window.pageXOffset,
-        };
-      }
-      // добавляем класс для остановки прокрутки
-      // window.onscroll=fixed_scroll;
-      // function fixed_scroll() {
-      //  if(window.pageYOffset > getCoordsFromDocument(scrollBox).top) {  // ваша высота
-      // 	box.classList.add('fixed_elem');
-      // } else {
-      //     box.classList.remove('fixed_elem')}
+
+      // Intersection Observer API (IOA)
+      // Задача: загружать (показывать) изображения по мере прокрутки страницы пользователем.
+      // // ждем полной загрузки страницы
+      // window.onload = () => {
+      //     // устанавливаем настройки
+      //     const options = {
+      //         // родитель целевого элемента - область просмотра
+      //         root: null,
+      //         // без отступов
+      //         rootMargin: '0px',
+      //         // процент пересечения - половина изображения
+      //         threshold: 0.5
+      //     }
+
+      //     // создаем наблюдатель
+      //     const observer = new IntersectionObserver((entries, observer) => {
+      //         // для каждой записи-целевого элемента
+      //         entries.forEach(entry => {
+      //             // если элемент является наблюдаемым
+      //             if (entry.isIntersecting) {
+      //                 const lazyImg = entry.target
+      //                 // выводим информацию в консоль - проверка работоспособности наблюдателя
+      //                 console.log(lazyImg)
+      //                 // меняем фон контейнера
+      //                 lazyImg.style.background = 'deepskyblue'
+      //                 // прекращаем наблюдение
+      //                 observer.unobserve(lazyImg)
+      //             }
+      //         })
+      //     }, options)
+
+      //     // с помощью цикла следим за всеми img на странице
+      //     const arr = document.querySelectorAll('img')
+      //     arr.forEach(i => {
+      //         observer.observe(i)
+      //     })
       // }
-      // Событие прокрутки окна
-      window.addEventListener("scroll", moveItemOnScroll);
+      // =====================================================================
+      // Задача: менять изображение-заполнитель на оригинальное при прокрутке страницы пользователем.
+      // window.onload = () => {
+      //   const observer = new IntersectionObserver(
+      //     (entries, observer) => {
+      //       entries.forEach((entry) => {
+      //         if (entry.isIntersecting) {
+      //           console.log(entry);
+      //           // ссылка на оригинальное изображение хранится в атрибуте "data-src"
+      //           entry.target.src = entry.target.dataset.src;
+      //           observer.unobserve(entry.target);
+      //         }
+      //       });
+      //     },
+      //     { threshold: 0.5 }
+      //   );
 
-      function moveItemOnScroll() {
-      
-        console.log(scrollBox.getBoundingClientRect().top);
-        if (scrollBox.getBoundingClientRect().top <= 50) {
-          
-					posX = leftNextSquaer;
-         posY = topNextSquaer;
-				 console.log(posX, posY); 
+      //   document
+      //     .querySelectorAll("img")
+      //     .forEach((img) => observer.observe(img));
+      // };
+      // =====================================================================
+      // Задача: менять фон контейнера при прокрутке страницы пользователем туда и обратно.
+      // window.addEventListener("load", (event) => {
+      //   let box = document.querySelector("div");
+      //   // ratio - процент видимости элемента
+      //   let prevRatio = 0.0;
+
+      //   let observer = new IntersectionObserver(
+      //     (entries, observer) => {
+      //       entries.forEach((entry) => {
+      //         let curRatio = entry.intersectionRatio;
+
+      //         // при прокрутке цвет меняется от светло-синего до светло-красного
+      //         // мы хотим наблюдать эффект при прокрутке страницы в обе стороны (вниз и вверх)
+      //         // поэтому наблюдение за элементом не прекращается
+      //         curRatio > prevRatio
+      //           ? (entry.target.style.background = `rgba(40,40,190,${curRatio})`)
+      //           : (entry.target.style.background = `rgba(190,40,40,${curRatio})`);
+
+      //         prevRatio = curRatio;
+      //       });
+      //     },
+      //     {
+      //       threshold: buildThresholdList(),
+      //     }
+      //   );
+
+      //   observer.observe(box);
+
+      //   // функция построения шкалы пересечения
+      //   // шкала представляет собой массив из 20 элементов, определяющих цвет контейнера
+      //   function buildThresholdList() {
+      //     let thresholds = [];
+      //     let steps = 20;
+
+      //     for (let i = 1.0; i <= steps; i++) {
+      //       let ratio = i / steps;
+      //       thresholds.push(ratio);
+      //     }
+      //     return thresholds;
+      //   }
+      // });
+      // =====================================================================
+      // Задача: ставить запущенное видео на паузу и запускать его снова в зависимости от попадания видео в область просмотра.
+      // 			window.onload = () => {
+      //     let video = document.querySelector('video')
+
+      //     let observer = new IntersectionObserver(() => {
+      //         // если видео запущено
+      //         if (!video.paused) {
+      //             // приостанавливаем проигрывание
+      //             video.pause()
+      //         // если видео было запущено ранее (текущее время проигрывания > 0)
+      //         } else if(video.currentTime != 0) {
+      //             // продолжаем проигрывание
+      //             video.play()
+      //         }
+      //     }, { threshold: 0.4 })
+
+      //     observer.observe(video)
+      // }
+      // =====================================================================
+      // Задача: показывать прогресс просмотра страницы по мере прокрутки страницы пользователем.
+      // страница состоит из нескольких контейнеров и параграфа для вывода прогресса
+      // let p = document.querySelector('p')
+      // // n - количество просмотренных контейнеров
+      // let n = 0
+
+      // let observer = new IntersectionObserver((entries, observer) => {
+      //     entries.forEach(entry => {
+      //         if(entry.isIntersecting){
+      //             // observer наблюдает за div
+      //             // и сообщает об увеличении количества просмотренных контейнеров
+      //             // выводим эту информацию в параграф
+      //             p.textContent = `${n++} div viewed`
+      //             observer.unobserve(entry.target)
+      //         }
+      //     })
+      // }, {threshold: 0.9})
+
+      // document.querySelectorAll('div').forEach(div => observer.observe(div))
+      // =====================================================================
+      // Изменение размеров дочернего элемента при изменении размеров родительского элемента
+
+      // Задача: установить зависимость размеров одного элемента от другого.
+      // у нас есть два контейнера - родитель и ребенок
+      // и параграф для вывода ширины ребенка
+      // let info = document.querySelector('.info')
+      // let parent = document.querySelector('.parent')
+      // let child = document.querySelector('.child')
+      // // отнимаем от ширины ребенка 50px для наглядности
+      // child.style.width = parent.offsetWidth - 50 + 'px'
+      // // выводим ширину ребенка в параграф
+      // info.textContent = `child width: ${child.offsetWidth}px`
+
+      // let options = {
+      //     // областью просмотра для ребенка является родитель
+      //     root: parent,
+      //     threshold: 1
+      // }
+
+      // let observer = new IntersectionObserver((entries, observer) => {
+      //     entries.forEach(entry => {
+      //         // если расстояние между родителем и ребенком составляет меньше 50px
+      //         if ((entry.target.parentElement.offsetWidth - entry.target.offsetWidth) < 50) {
+      //             // уменьшаем ширину ребенка на 50px
+      //             entry.target.style.width = entry.target.offsetWidth - 50 + 'px'
+      //         }
+      //     })
+      // }, options)
+
+      // observer.observe(child)
+
+      // // к сожалению, не додумался, как реализовать обратный эффект с помощью IOA
+      // // поэтому реализовал его с помощью обработки resize
+      // window.addEventListener('resize', () => {
+      //     info.textContent = `child width: ${child.offsetWidth}px`
+      //     if ((parent.offsetWidth - child.offsetWidth) > 51) {
+      //         child.style.width = child.offsetWidth + 50 + 'px'
+      //     }
+      // })
+      // =====================================================================
+      // Задача: анимировать объект при его видимости.
+      // у нас есть Барт Симпсон и две анимации
+      // одна анимация перемещает Барта влево
+      // другая - вправо
+      let observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            entry.isIntersecting
+              ? entry.target.classList.replace("to-left", "to-right")
+              : entry.target.classList.replace("to-right", "to-left");
+          });
+        },
+        {
+          threshold: 0.5,
         }
-        
-       angle = currentPointRotate;
+      );
 
-        // Влияем на стили
-        box.style.transform = `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
-      }
-
+      observer.observe(document.querySelector("img"));
     </script>
   </body>
 </html>
