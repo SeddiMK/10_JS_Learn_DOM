@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .square__container {
+        max-width: 62.5em;
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #f00;
+        position: absolute;
+				z-index: 10;
+
+        top: 0;
+        left: 0%;
+        /* transform: translate(-50%, -50%); */
+      }
+      #scroll {
+        position: relative;
+				z-index: 0;
+        right: 0;
+        margin: 0 0 0 auto;
+        width: 100px;
+        height: 100px;
+        background-color: rgb(0, 255, 102);
+      }
+      .fixed_elem {
+        position: fixed !important;
+        /* top: 10px !important; // ваши параметры
+        left: 10px !important; */
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="square">
+      <div class="square__container">
+        <ul>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="box">00000</div>
+          </li>
+          <li>
+            <div id="" class=""></div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <div id="" class=""></div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <div id="scroll" class="box">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+
+          <li>
+            <div id="" class="">112</div>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">112</div>
+          </li>
+          <li>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In cumque
+              quaerat optio consequuntur, autem dolorem adipisci velit
+              voluptates repellat ea minus, sapiente illo! Iure, dolorem.
+              Sapiente nisi ab quo qui?
+            </p>
+            <div id="" class="">1234</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <script>
+      // select the  element
+      const cnt = document.querySelector(".square__container");
+      const box = cnt.querySelector(".box");
+      const scrollBox = cnt.querySelector("#scroll");
+
+      //размер квадрата(объекта)
+      const screenItemSizes = {
+        width: box.offsetWidth,
+        height: box.offsetHeight,
+      };
+
+      const html = document.documentElement;
+
+      const topNextSquaer = scrollBox.getBoundingClientRect().top;
+      const bottomNextSquaer = scrollBox.getBoundingClientRect().bottom;
+      const leftNextSquaer = scrollBox.getBoundingClientRect().left;
+      const rightNextSquaer = scrollBox.getBoundingClientRect().right;
+      // console.log(topNextSquaer);
+      // console.log(bottomNextSquaer);
+      // console.log(leftNextSquaer);
+      // console.log(rightNextSquaer);
+      // define the starting positions
+      let posX = 0;
+      let posY = 0;
+      let angle = 0;
+      // Вычислить координаты относительно всего документа
+      function getCoordsFromDocument(elem) {
+        let coords = elem.getBoundingClientRect();
+        return {
+          top: coords.top + window.pageYOffset,
+          left: coords.left + window.pageXOffset,
+        };
+      }
+      // добавляем класс для остановки прокрутки
+      // window.onscroll=fixed_scroll;
+      // function fixed_scroll() {
+      //  if(window.pageYOffset > getCoordsFromDocument(scrollBox).top) {  // ваша высота
+      // 	box.classList.add('fixed_elem');
+      // } else {
+      //     box.classList.remove('fixed_elem')}
+      // }
+      // Событие прокрутки окна
+      window.addEventListener("scroll", moveItemOnScroll);
+
+      function moveItemOnScroll() {
+      
+        console.log(scrollBox.getBoundingClientRect().top);
+        if (scrollBox.getBoundingClientRect().top <= 50) {
+          
+					posX = leftNextSquaer;
+         posY = topNextSquaer;
+				 console.log(posX, posY); 
+        }
+        
+       angle = currentPointRotate;
+
+        // Влияем на стили
+        box.style.transform = `translate(${posX}px, ${posY}px) rotate(${angle}deg)`;
+      }
+
+    </script>
+  </body>
+</html>
