@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        color: #369;
+        font: 1em Arial, sans-serif;
+      }
+      :root {
+        --toast-border-radius: 0.25rem;
+        --toast-theme-default: #fff;
+        --toast-width: 270px;
+      }
+
+      .toast {
+        font-size: 0.875rem;
+        background-clip: padding-box;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: var(--toast-border-radius);
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        display: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .toast_default {
+        color: #212529;
+        background-color: var(--toast-theme-default);
+      }
+
+      .toast:not(:last-child) {
+        margin-bottom: 0.75rem;
+      }
+
+      .toast__header {
+        position: relative;
+        padding: 0.5rem 2.25rem 0.5rem 1rem;
+        background-color: rgba(0, 0, 0, 0.03);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .toast__close {
+        content: '';
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 0.875em;
+        height: 0.875em;
+        background: transparent
+          url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e")
+          center/0.875em auto no-repeat;
+        border: 0;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 0.1s ease-in-out;
+      }
+
+      .toast__close:hover {
+        opacity: 1;
+      }
+
+      .toast__body {
+        padding: 1rem;
+      }
+
+      .toast_message .toast__body {
+        padding-right: 2.25rem;
+      }
+      .toast_show {
+        display: block;
+      }
+      .toast-container {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        width: var(--toast-width);
+      }
+      /* ===================================================== */
+      body::after {
+        content: '';
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.8s ease 0s;
+        pointer-events: none;
+        z-index: 149;
+      }
+      .popup-show body::after {
+        opacity: 1;
+      }
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 30px 10px;
+        transition: visibility 0.8s ease 0s;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .popup_show {
+        z-index: 150;
+        visibility: visible;
+        overflow: auto;
+        pointer-events: auto;
+      }
+      .popup_show .popup__content {
+        visibility: visible;
+        transform: scale(1);
+      }
+      .popup__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+        min-height: 100%;
+        flex: 1 1 auto;
+        width: 100%;
+      }
+      .popup__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        transform: scale(0);
+        transition: transform 0.3s ease 0s;
+        background-color: #c2e6e5;
+        padding: 20px;
+        width: 100%;
+        max-width: 200px;
+        border-radius: 20px;
+      }
+      .popup__content .lock {
+        visibility: visible;
+      }
+      .popup__close {
+        border: none;
+        border-radius: 0.5em;
+        padding: 0.5em 0.8em;
+        margin-bottom: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>Задачи по <a href="http://htmllab.ru">JavaScript</a></h1>
+      <!-- 
+		Задача
+		* Создать скрипт, который при нажатии на гиперссылку "Добавить" будет показывать в нижней части окна браузера уведомление, подобно тем, которые появляются в социальных сетях при получении сообщения.
+
+		1. Найти элемент "Добавить"
+		2. Слушаем событие click
+		3. Выводим уведомление 
+		-->
+
+      <form data-dev>
+        <textarea name="message" id="" cols="30" rows="5"></textarea><br />
+        <a href="#" class="add" data-popup="#popup">Добавить</a>
+      </form>
+      <div class="toast toast_message toast_default">
+        <div class="toast__body">Сообщение добавлено</div>
+        <button class="toast__close" type="button"></button>
+      </div>
+    </div>
+    <div id="popup" aria-hidden="true" class="popup">
+      <div class="popup__wrapper">
+        <div class="popup__content">
+          <button data-close type="button" class="popup__close">Закрыть</button>
+          <div class="popup__text">Коментарий добавлен</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const add = document.querySelector('.add');
+      const popup = document.querySelector('#popup');
+      const closePopup = document.querySelector('[data-close]');
+      // add.addEventListener("click", showPopup);
+      document.addEventListener('click', showPopup);
+
+      function showPopup(e) {
+        // если клик был выполнен где-либо за пределами выпадающего меню, закрываем его.
+        // if (!e.target.closest("popup_show")) {
+        //   console.log("12212121");
+        //   popup.classList.add("popup_show");
+        //   //navigation.classList.remove("is-expanded");
+        // }
+        // console.log(
+        //   e.target.closest(".popup__close") ||
+        //     (e.target && document.querySelector(".popup_show"))
+        // );
+        if (
+          e.target.closest('.add') &&
+          !document.querySelector('.popup_show')
+        ) {
+          console.log('нажали на кнопку Добавить');
+          popup.classList.add('popup_show');
+        }
+        if (
+          e.target.closest('.popup__close') ||
+          (e.target.closest('.popup_show') &&
+            document.querySelector('.popup_show'))
+        ) {
+          console.log('Закрываем');
+          popup.classList.remove('popup_show');
+        }
+      }
+
+      /*
+         	title - название заголовка
+         	text - текст сообщения
+         	theme - тема
+         	autohide - нужно ли автоматически скрыть всплывающее сообщение через interval миллисекунд
+         	interval - количество миллисекунд через которые необходимо скрыть сообщение
+         */
+      // new Toast({
+      //   title: "Заголовок",
+      //   text: "Сообщение...",
+      //   theme: "light",
+      //   autohide: true,
+      //   interval: 10000,
+      // });
+
+      // function showNotification() {
+      // check if the browser supports the Notification API
+      //   if (!("Notification" in window)) {
+      //     alert("This browser does not support desktop notification");
+      //   }
+
+      //   // ask for permission to show notification
+      //   else if (Notification.permission === "granted") {
+      //     // create and show notification
+      //     var notification = new Notification("New message", {
+      //       body: "You have received a new message",
+      //       icon: "path/to/icon.png",
+      //     });
+      //   } else if (Notification.permission !== "denied") {
+      //     Notification.requestPermission(function (permission) {
+      //       if (permission === "granted") {
+      //         // create and show notification
+      //         var notification = new Notification("New message", {
+      //           body: "You have received a new message",
+      //           icon: "path/to/icon.png",
+      //         });
+      //       }
+      //     });
+      //   }
+      // }
+      // function showNotification() {
+      //   if (e.target.classList.contains("toast__close")) {
+      //     // вызываем метод, скрывающий сообщение
+      //     this._hide();
+      //   }
+      //   if (!document.querySelector(".toast-container")) {
+      //     const container = document.createElement("div");
+      //     container.classList.add("toast-container");
+      //     document.body.append(container);
+      //   }
+      // }
+      // class Toast {
+      //   constructor(params) {
+      //     this._title =
+      //       params["title"] === false ? false : params["title"] || "Title";
+      //     this._text = params["text"] || "Message...";
+      //     this._theme = params["theme"] || "default";
+      //     this._autohide = params["autohide"] && true;
+      //     this._interval = +params["interval"] || 5000;
+      //     this._create();
+      //     this._el.addEventListener("click", (e) => {
+      //       if (e.target.classList.contains("toast__close")) {
+      //         this._hide();
+      //       }
+      //     });
+      //     this._show();
+      //   }
+      //   _show() {
+      //     this._el.classList.add("toast_showing");
+      //     this._el.classList.add("toast_show");
+      //     window.setTimeout(() => {
+      //       this._el.classList.remove("toast_showing");
+      //     });
+      //     if (this._autohide) {
+      //       setTimeout(() => {
+      //         this._hide();
+      //       }, this._interval);
+      //     }
+      //   }
+      //   _hide() {
+      //     this._el.classList.add("toast_showing");
+      //     this._el.addEventListener(
+      //       "transitionend",
+      //       () => {
+      //         this._el.classList.remove("toast_showing");
+      //         this._el.classList.remove("toast_show");
+      //         this._el.remove();
+      //       },
+      //       {
+      //         once: true,
+      //       }
+      //     );
+      //     const event = new CustomEvent("hide.toast", {
+      //       detail: {
+      //         target: this._el,
+      //       },
+      //     });
+      //     document.dispatchEvent(event);
+      //   }
+      //   _create() {
+      //     const el = document.createElement("div");
+      //     el.classList.add("toast");
+      //     el.classList.add(`toast_${this._theme}`);
+      //     let html = `{header}<div class="toast__body"></div><button class="toast__close" type="button"></button>`;
+      //     const htmlHeader =
+      //       this._title === false ? "" : '<div class="toast__header"></div>';
+      //     html = html.replace("{header}", htmlHeader);
+      //     el.innerHTML = html;
+      //     if (this._title) {
+      //       el.querySelector(".toast__header").textContent = this._title;
+      //     } else {
+      //       el.classList.add("toast_message");
+      //     }
+      //     el.querySelector(".toast__body").textContent = this._text;
+      //     this._el = el;
+      //     if (!document.querySelector(".toast-container")) {
+      //       const container = document.createElement("div");
+      //       container.classList.add("toast-container");
+      //       document.body.append(container);
+      //     }
+      //     document.querySelector(".toast-container").append(this._el);
+      //   }
+      // }
+    </script>
+  </body>
+</html>
